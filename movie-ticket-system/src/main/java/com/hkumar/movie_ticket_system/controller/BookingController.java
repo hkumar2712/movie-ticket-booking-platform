@@ -3,10 +3,7 @@ package com.hkumar.movie_ticket_system.controller;
 import com.hkumar.movie_ticket_system.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +15,10 @@ public class BookingController {
     private final BookingService bookingService;
 
     @PostMapping
-    public String book(@RequestBody List<Long> seatIds,
-                       @AuthenticationPrincipal String username) {//AuthenticationPrincipal: because we stored username in JWT
+    public String book(@RequestParam Long showId,
+                       @RequestBody List<Long> seatIds,
+                       @AuthenticationPrincipal String username) {
 
-        return bookingService.bookSeats(seatIds, username);
+        return bookingService.bookSeats(seatIds, showId, username);
     }
 }

@@ -1,5 +1,6 @@
 package com.hkumar.movie_ticket_system.event.producer;
 
+import com.hkumar.movie_ticket_system.entity.BookingEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +13,11 @@ public class BookingEventProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendBookingEvent(String message) {
+    public void sendBookingEvent(BookingEvent event) {
         try {
-            kafkaTemplate.send("booking-topic", message);
+            kafkaTemplate.send("booking-topic", event.getUsername());
         } catch (Exception e) {
-            System.out.println("Kafka not available, skipping event: " + message);
+            System.out.println("Kafka not available, skipping event: " + event);
         }
     }
 }
