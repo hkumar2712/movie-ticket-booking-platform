@@ -1,0 +1,35 @@
+# Movie Ticket Booking System APIs to test:
+
+Base URL: http://localhost:8085
+Auth: Bearer Token required except /auth/**
+
+| No | API | Req Body |
+|---|---|---|
+| 1 | POST /auth/register | {"username":"john_doe","password":"password123","role":"CUSTOMER"} |
+| 2 | POST /auth/login | {"username":"john_doe","password":"password123"} |
+| 3 | POST /movies | {"name":"Inception","language":"English","genre":"Sci-Fi","durationMinutes":148} |
+| 4 | GET /movies | None |
+| 5 | GET /movies/{id} | None |
+| 6 | GET /movies/language/{language} | None |
+| 7 | GET /movies/genre/{genre} | None |
+| 8 | PUT /movies/{id} | {"name":"Inception","language":"English","genre":"Thriller","durationMinutes":148} |
+| 9 | DELETE /movies/{id} | None |
+| 10 | POST /theatres | {"name":"PVR Cinemas","city":"Bengaluru","address":"Forum Mall","totalScreens":8} |
+| 11 | GET /theatres | None |
+| 12 | GET /theatres/{id} | None |
+| 13 | GET /theatres/city/{city} | None |
+| 14 | PUT /theatres/{id} | {"name":"PVR IMAX","city":"Bengaluru","address":"Forum Mall","totalScreens":10} |
+| 15 | DELETE /theatres/{id} | None |
+| 16 | POST /shows?movieId={movieId}&theatreId={theatreId} | {"showTime":"2026-04-26T18:00:00"} |
+| 17 | GET /shows | None |
+| 18 | GET /shows/{id} | None |
+| 19 | GET /shows/movie/{movieId} | None |
+| 20 | GET /shows/theatre/{theatreId} | None |
+| 21 | GET /shows/search?movieId={movieId}&theatreId={theatreId} | None |
+| 22 | DELETE /shows/{id} | None |
+| 23 | POST /seats/show/{showId} | ["A1","A2","A3","B1","B2"] |
+| 24 | GET /seats/show/{showId} | None |
+| 25 | GET /seats/show/{showId}/available | None |
+| 26 | GET /seats/{id} | None |
+| 27 | POST /booking?showId={showId} | [1,2,3] |
+| 28 | GET /test | None |

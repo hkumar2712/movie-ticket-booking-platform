@@ -46,11 +46,11 @@ public class BookingService {
                     throw new RuntimeException("Seat does not belong to this show");
                 }
             }
-//            for (Seat seat : seats) {
-//                if (seat.isBooked()) {
-//                    throw new RuntimeException("Seat already booked: " + seat.getSeatNumber());
-//                }
-//            }
+            for (Seat seat : seats) {
+                if (seat.isBooked()) {
+                    throw new RuntimeException("Seat already booked: " + seat.getSeatNumber());
+                }
+            }
 
             // STEP 4: APPLY OFFER (OPTIONAL - SIMPLE)
             // double finalPrice = offerService.applyDiscount(...);

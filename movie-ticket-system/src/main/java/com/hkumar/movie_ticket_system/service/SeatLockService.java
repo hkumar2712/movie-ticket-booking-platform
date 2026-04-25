@@ -25,9 +25,9 @@ public class SeatLockService {
                 String key = getKey(showId, seatId);
 
                 Boolean success = redisTemplate.opsForValue()
-                        .setIfAbsent(key, userId, Duration.ofMinutes(5));
+                        .setIfAbsent(key, String.valueOf(userId), Duration.ofMinutes(5));
 
-                if (Boolean.FALSE.equals(success)) {
+                if (!Boolean.TRUE.equals(success)) {
                     releaseSeats(lockedKeys);
                     return false;
                 }

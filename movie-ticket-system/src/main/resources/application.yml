@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/movie_db
+    url: jdbc:mysql://localhost:3306/movie_tkt_booking
     username: root
     password: password
 
@@ -12,13 +12,22 @@ spring:
       hibernate:
         format_sql: true
 
-#  kafka:
-#    bootstrap-servers: localhost:9092
-#    consumer:
-#      group-id: booking-group
-
-  spring:
+  data:
     redis:
       host: localhost
       port: 6379
       timeout: 2000ms
+      repositories:
+        enabled: false
+
+app:
+  kafka:
+    enabled: false
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    url: /v3/api-docs
+  api-docs:
+    path: /v3/api-docs
+  packages-to-scan: com.hkumar.movie_ticket_system.controller
